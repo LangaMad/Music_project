@@ -2,6 +2,7 @@ from django.db import models
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
+from ..music.models import Music
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -43,8 +44,10 @@ class User(AbstractUser):
     phone = models.CharField('Телефон',max_length=10,null=True,blank=True)
     created = models.DateTimeField('Дата создания аккаунта',auto_now_add=True)
     avatar = models.ImageField('Фото пользователя', upload_to='media/images/',blank=True,null=True)
+    favorite_song = models.ManyToManyField(Music,verbose_name='Избранные песни',
+                    related_name='favorite_song')
 
-
+    objects = UserManager()
 
 
 

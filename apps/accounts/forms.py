@@ -20,6 +20,7 @@ class RegisterForm(UserCreationForm):
         'class': 'form-control',
         'placeholder': 'Email'
     }))
+    
 
     class Meta:
         model = User
@@ -35,7 +36,7 @@ class LoginForm(forms.Form):
         'class': 'form-control',
         'placeholder': 'Email'
     }))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'placeholder': 'Password'
     }))
