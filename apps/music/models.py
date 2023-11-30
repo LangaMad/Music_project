@@ -10,14 +10,32 @@ class Singer(models.Model):
     photo = models.ImageField('Photo', upload_to='singers/')
     biography = models.TextField('Биография')
 
+    class Meta:
+        verbose_name = 'Певец'
+        verbose_name_plural = 'Певцы'
+
+    def __str__(self):
+        if self.first_name:
+            return f'{self.first_name} {self.last_name}'
+        else:
+            return self.nickname
+
+
+
 class Gruop(models.Model):
     group_name = models.CharField('Название группы', max_length=100)
     photo = models.ImageField('Photo', upload_to='groups/')
     biography = models.TextField('Биография')
     created_date = models.DateField('Дата создания группы')
     singer = models.ManyToManyField(Singer,
-            verbose_name='Певец', related_name='singer_group',
-                    )
+            verbose_name='Певец', related_name='singer_group',)
+
+    class Meta:
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'
+
+    def __str__(self):
+        return self.group_name
 
 class Genre(models.Model):
     name = models.CharField('Жанр',max_length=50,unique=True)
@@ -47,7 +65,7 @@ class Music(models.Model):
 
     class Meta:
         verbose_name = 'Музыка'
-        verbose_name_plural = 'Музыки'
+        verbose_name_plural = 'Музыка'
         ordering = ['-public_date']
 
     def __str__(self):

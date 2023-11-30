@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': "music_db",
         'USER': "music_man",
         "PASSWORD": "qwerty123",
-        "HOST": "127.0.0.1",
+        "HOST": "127.0.0.1", # localhost
         "PORT": "5432"
     }
 }

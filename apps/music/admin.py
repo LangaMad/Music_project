@@ -42,6 +42,7 @@ class GroupAdmin(admin.ModelAdmin):
 @admin.register(Singer)
 class SingerAdmin(admin.ModelAdmin):
     list_display = [
+        'id',
         'first_name',
         'last_name',
         'nickname',
